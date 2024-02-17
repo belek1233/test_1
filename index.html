@@ -1,11 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palindrome Checker</title>
+<style>* {
+	margin:0;
+	padding:0px;
+	box-sizing:border-box;
+}
+main {
+	border:2px solid green;
+	text-align:center;
+	width:90%;
+	max-width: 500px;
+	margin:0px auto;
+	padding:1%;
+}
+
+#text-input {
+  	margin:2% 0;
+	padding:1%;
+}
+#check-btn {
+  	margin:2% 2%;
+	padding:1%;
+	border-radius:12%;
+}
+#check-btn:active {
+	background-color:#B7F200;
+}
+#check-btn:hover {
+	text-decoration:underline;
+	border-color:#aaa;
+	cursor:pointer;
+}
+#result {
+  	padding:1%;
+	min-height:2rem;
+}
+</style>
 </head>
 <body>
-    
+<main>
+	<h1>Is it a Palindrome?</h1>
+	<p>Enter your text to check:</p>
+	<input type="text" id="text-input">
+	<button type="submit" id="check-btn" >Check</button>
+	<div id="result" placeholder="1">All symbols except from "a" to "z" and "0" to "9"  will not be counted
+	</div>
+</main>
+<script>let button = document.querySelector('#check-btn');
+let textInput = document.querySelector("#text-input")
+let result = document.querySelector("#result")
+let currentText;
+const invalidText = (str) => {
+	return str.replaceAll(/[^a-z0-9]/gi,"").toLowerCase();
+};
+const palindrome = () => {
+	if(textInput.value === "" ){ 
+		alert("Please input a value");
+	}
+	else {
+		currentText = invalidText(textInput.value).split('').reverse().join("");
+		if(invalidText(textInput.value) === currentText){
+			result.innerText = `${textInput.value} is a palindrome`;
+			
+		}
+		else {result.innerText = `${textInput.value} is not a  palindrome`;}
+		return result;
+		}
+	
+	}
+	
+	
+button.addEventListener('click', palindrome
+);
+
+
+
+</script>
 </body>
 </html>
+
